@@ -46,6 +46,8 @@ Current Maintainers <!-- This section is required. -->
 Credits <!-- This section is required. -->
 -------
 
+- Backdrop port sponsored by [ChinaFile](https://www.chinafile.com/) and [The Asia Society](https://asiasociety.org/).
+- Ported to Backdrop CMS by [Jen Lampton](https://github.com/jenlampton) of [Jeneration Web Development](https://www.jenerationweb.com).
 - Maintained for Drupal by [Mark Fullmer](https://github.com/markfullmer).
 - Maintained for Drupal by [gravelpot](https://www.drupal.org/u/gravelpot).
 - Maintained for Drupal by [bjc2265](https://www.drupal.org/u/bjc2265).
@@ -53,10 +55,8 @@ Credits <!-- This section is required. -->
 - Maintained for Drupal by [mmarler](https://www.drupal.org/u/mmarler).
 - Maintained for Drupal by [ricksta](https://www.drupal.org/u/ricksta).
 - Drupal development sponsored by [University of Texas at Austin](https://www.drupal.org/university-of-texas-at-austin).
-- Inital development sponsored by [ChinaFile](https://www.chinafile.com/).
-- Inital development sponsored by [The Asia Society](https://asiasociety.org/).
-- Inital development sponsored by [Jeneration Web Development](https://www.jenerationweb.com).
-- Originally written for Drupal by [Jen Lampton](https://github.com/jenlampton).
+- Inital development sponsored by [ChinaFile](https://www.chinafile.com/) and [The Asia Society](https://asiasociety.org/).
+- Originally written for Drupal by [Jen Lampton](https://github.com/jenlampton) of [Jeneration Web Development](https://www.jenerationweb.com).
 
 
 License <!-- This section is required. -->
