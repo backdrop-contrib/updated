@@ -10,6 +10,7 @@
 function updated_form_node_type_form_alter(&$form, $form_values) {
   $form['display']['node_updated'] = array(
     '#type' => 'checkbox',
+    '#weight' => 0,
     '#title' => t('Display last updated date.'),
     '#default_value' => variable_get('node_updated_' . $form['#node_type']->type, TRUE),
     '#description' => t('Last updated date will be displayed along with published date.'),
