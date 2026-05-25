@@ -29,10 +29,11 @@ function updated_form_node_form_alter(&$form, $form_values) {
   if (variable_get('node_updated_' . $form['#node']->type, TRUE)) {
     // Add the updated date so authors can see it here.
     if (property_exists($form['#node'], 'changed')) {
+      $changed = $form['#node']->changed ? format_date($form['#node']->changed) : '';
       $form['author']['updated_value'] = array(
         '#type' => 'textfield',
         '#title' => t('Last updated'),
-        '#value' => format_date($form['#node']->changed),
+        '#value' => $changed,
         '#disabled' => TRUE,
       );
     }
