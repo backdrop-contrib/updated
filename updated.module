@@ -5,6 +5,17 @@
  */
 
 /**
+ * Implements hook_config_info().
+ */
+function updated_config_info() {
+  $prefixes['updated.settings'] = array(
+    'label' => t('Updated settings'),
+    'group' => t('Configuration'),
+  );
+  return $prefixes;
+}
+
+/**
  * Implements hook_form_BASE_FORM_alter().
  */
 function updated_form_node_type_form_alter(&$form, $form_values) {
@@ -12,21 +23,31 @@ function updated_form_node_type_form_alter(&$form, $form_values) {
     '#type' => 'checkbox',
     '#weight' => 0,
     '#title' => t('Display last updated date.'),
-    '#default_value' => variable_get('node_updated_' . $form['#node_type']->type, TRUE),
+    '#default_value' => config_get('updated.settings', $form['#node_type']->type),
     '#description' => t('Last updated date will be displayed along with published date.'),
     '#states' => array(
-      'visible' => array(   // action to take.
+      'visible' => array(
         ':input[name=node_submitted]' => array('checked' => TRUE),
       ),
     ),
   );
+  $form['#submit'][] = 'updated_node_type_form_submit';
+}
+
+/**
+ * Submit handler for node type form.
+ */
+function updated_node_type_form_submit($form, &$form_state) {
+  $type = $form_state['values']['type'];
+  $value = !empty($form_state['values']['node_updated']) ? 1 : 0;
+  config_set('updated.settings', $type, $value);
 }
 
 /**
  * Implements hook_form_BASE_FORM_alter().
  */
 function updated_form_node_form_alter(&$form, $form_values) {
-  if (variable_get('node_updated_' . $form['#node']->type, TRUE)) {
+  if (config_get('updated.settings', $form['#node']->type)) {
     // Add the updated date so authors can see it here.
     if (property_exists($form['#node'], 'changed')) {
       $changed = $form['#node']->changed ? format_date($form['#node']->changed) : '';
@@ -81,7 +102,7 @@ function updated_schema_alter(&$schema) {
  * Implements hook_preprocess_node().
  */
 function updated_preprocess_node(&$variables) {
-  if (variable_get('node_updated_' . $variables['node']->type, TRUE) && $variables['node']->show_updated) {
+  if (config_get('updated.settings', $variables['node']->type) && $variables['node']->show_updated) {
     $date = format_date($variables['node']->changed);
     $variables['submitted'] .= '&nbsp;&bull;&nbsp;<span>' . t('Updated on !date', array('!date' => $date)) . '</span>';
   }
