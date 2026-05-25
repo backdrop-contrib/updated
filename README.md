@@ -42,6 +42,7 @@ Current Maintainers <!-- This section is required. -->
 
 - [Mark Fullmer](https://github.com/markfullmer).
 - [Jen Lampton](https://github.com/jenlampton).
+- [Laryn Kragt Bakker](https://github.com/laryn).
 
 Credits <!-- This section is required. -->
 -------
